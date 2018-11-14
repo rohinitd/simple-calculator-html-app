@@ -1,0 +1,74 @@
+<div>
+  <input id = "result"  class = "resultclass" />
+</div>
+<div>
+  <button class = "symbolButtons" value = '+' id= "+" onclick= "add()">
+  +
+  </button>
+  <button class = "symbolButtons" value = '-' id= "-" onclick= "sub()">
+  -
+  </button>
+  <button class = "symbolButtons" value = 'X' id= "*" onclick= "mul()">
+  X
+  </button>
+  <button class = "symbolButtons" value = '/' id = "/" onclick= "div()">
+  /
+  </button>
+  <button class = "symbolButtons" onclick= "equal()">
+  =
+  </button>
+  
+</div>
+
+<script>
+		function add() {
+      var a = document.getElementById("+").value; 
+      document.getElementById("result").value += a;
+      calc.readFromInput();
+    }
+    
+    function sub() {
+      var a = document.getElementById("-").value; 
+      document.getElementById("result").value += a;
+      calc.readFromInput();
+    }
+    
+    function mul() {
+       var a = document.getElementById("*").value; 
+      document.getElementById("result").value += a;
+      calc.readFromInput();
+    }
+    
+    function div() {
+       var a = document.getElementById("/").value; 
+      document.getElementById("result").value += a;
+      calc.readFromInput();
+    }
+  
+  	function equal() {
+    	var a = calc.arr; var num = 0,symbol;
+      var arr = [];
+      for(var i=0; i<a.length; i++) {
+      	if(Number(a[i]) >= 0 || Number(a[i]) <= 9) {
+          num = num * 10 + Number(a[i]);
+        }
+        else {
+        	symbol = a[i];  
+          arr.push(num);
+          num = 0;
+        }
+      }
+      arr.push(num);
+      console.log(arr);
+      if(symbol == '+')
+      	document.getElementById("result").value = arr[0]+arr[1];
+      else if(symbol == '-')
+      	document.getElementById("result").value = arr[0]-arr[1];
+      else if(symbol == 'X')
+      	document.getElementById("result").value = arr[0]*arr[1];
+      else if(symbol == '/')
+      	document.getElementById("result").value = arr[0]/arr[1];
+      calc.readFromInput();
+    }
+</script>
+
